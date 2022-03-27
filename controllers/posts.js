@@ -7,7 +7,7 @@ export const getPosts = async (req, res) => {
         //     msg: "hi there",
         //     type: "String",
         // }
-        res.status(200).json({ postMessage });
+        res.status(200).json(postMessage);
     }
     catch (err) {
         res.status(404).send(err.message);
