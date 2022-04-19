@@ -16,7 +16,7 @@ export const getPost = async (req, res) => {
 export const getPosts = async (req, res) => {
     const { page } = req.query;
     try {
-        const LIMIT = 8;
+        const LIMIT = 6;
         // to get the starting index of every page
         const startIndex = (Number(page) - 1) * LIMIT;
         const total = await PostMessage.countDocuments({});
@@ -52,13 +52,13 @@ export const createPost = async (req, res) => {
     try {
         const newPost = new PostMessage({ ...post, creator: req.userId, createdAt: new Date().toISOString() });
         await newPost.save();
+        // console.log("newPost-->", newPost);
+        // console.log("{newPost}-->", { newPost });
         res.status(201).json(newPost);
 
     } catch (error) {
         console.log(error);
     }
-
-
 }
 
 export const updatePost = async (req, res) => {
